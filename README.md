@@ -6,6 +6,7 @@ npm for bundling packages
 DEPENDENCIES
 Pug
 Nodemon
+BrowserSync
 
 TUTORIALS
 https://auth0.com/blog/create-a-simple-and-stylish-node-express-app/
