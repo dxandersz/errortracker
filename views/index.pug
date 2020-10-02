@@ -1,7 +1,7 @@
 extends layout
 
 block layout-content
-    div.View
+    div.View.WelcomeView
         h1.Banner Errortracker
         div.Message
             div.Title
@@ -9,6 +9,11 @@ block layout-content
                 h1 Successful Devs Need
             span.Details Create an Errortracker account!
         div.NavButtons
-            a(href="/user")
-                div.NavButton See what you can do!
-            h3 Not much, amirite???!?!?
+            if isAuthenticated
+                a(href="/user")
+                    div.NavButton Just dive in!
+            else
+                a(href="/login")
+                    div.NavButton Log in
+
+

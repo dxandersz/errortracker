@@ -7,8 +7,8 @@ DEPENDENCIES
 Pug
 Nodemon
 BrowserSync
-Auth0
-Passport.js
+Auth0 for handling user authentication
+Passport.js for auth middleware
 
 TUTORIALS
 https://auth0.com/blog/create-a-simple-and-stylish-node-express-app/
