@@ -12,7 +12,7 @@ const path = require("path");
   */
 
 const app = express();
-const port = process.env.PORT || "4000";
+const port = process.env.PORT || "3000";
 
 /**
   * Session Configuration
@@ -38,6 +38,11 @@ app.set("view engine", "pug");
 app.get("/", (req, res) => {
   res.render("index",{title: "Home" });
 });
+
+app.use('*', (err, req, res, next) => {
+  console.error(err);
+    res.status(404).json({error: 'Not Found'});
+  });
 
 /** 
  * Server Activation
