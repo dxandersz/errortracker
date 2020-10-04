@@ -1,10 +1,10 @@
-const DB_NAME = 'errortracker'
+const DB_NAME = 'errortracker';
 
 const options = {
     query: (e) => {
         console.log(e.query);
-    }
-}
+    },
+};
 
 const pgp = require('pg-promise')(options);
 
