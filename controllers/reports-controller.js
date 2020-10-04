@@ -16,6 +16,17 @@ reportsController.index = (req, res) => {
         });
 };
 
+reportsController.show = (req, res) => {
+    const id = req.params.id
+    Report.getById(id)
+    .then((foundReport) => {
+        res.json({
+            message: 'ok',
+            data: { report: foundReport }
+        });
+    });
+};
+
 reportsController.create = (req, res) => {
     new Report({
         category: req.body.category,
@@ -40,9 +51,9 @@ reportsController.create = (req, res) => {
 reportsController.update = (req, res) => {
     Report.getById(req.params.id)
     .then((report) => {
-        return report.udpate(req.body);
+        return report.update(req.body);
     })
-    .then((updatedRport) => {
+    .then((updatedReport) => {
         res.json({
             message: 'ok',
             data: { report: updatedReport },

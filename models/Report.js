@@ -1,4 +1,4 @@
-const db = require('../db/config')
+const db = require('../db/config');
 
 class Report {
     constructor(report) {
@@ -24,7 +24,7 @@ class Report {
         return db
             .oneOrNone('SELECT * FROM reports WHERE id = $1', id)
             .then((report) => {
-                if (report) return new this (report);
+                if (report) return new this(report);
                 throw new Error('Error report not found.')
             });
     }
@@ -49,11 +49,12 @@ class Report {
             .oneOrNone(
 
                 `UPDATE reports SET
-                    category = $/category/,
-                    title = $/title/,
-                    description = $/description/,
-                    error_log = $/error_log/,
-                    solution = $/solution/
+                        category = $/category/,
+                        title = $/title/,
+                        description = $/description/,
+                        error_log = $/error_log/,
+                        solution = $/solution/
+                    WHERE id = $/id/
                     RETURNING *`,
                         this
                     )

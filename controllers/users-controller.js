@@ -11,7 +11,8 @@ usersController.index = (req, res) => {
         });
     })
     .catch((err) => {
-        res.status(500).json({ err })
+        console.log(err);
+        res.status(500).json({ err, message: err.message });
     });
 };
 
@@ -61,21 +62,19 @@ usersController.create = (req, res) => {
 }
 
 usersController.update = (req, res) => {
-    const user = User.getById(req.params.id).then((foundUser) => {
-        return foundUser.update(req.body)
+    User.getById(req.params.id)
+    .then((user) => {
+        return user.update(req.body)
     }).then((updatedUser) => {
         res.json({
             message: 'ok',
-            user: updatedUser
-        })
+            data: { report: updatedUser },
+        });
     })
     .catch((err) => {
-        if (err.message === 'User not found') {
-            res.status(404).json({ err: 'User not found' })
-        } else {
-            res.status(500).json({ err })
-        }
-    })
+        console.log(err);
+        res.status(500).json({ err, message: err.message });
+    });
 }
 
 module.exports = usersController;
