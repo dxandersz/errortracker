@@ -1,15 +1,15 @@
-const DB_NAME = 'errortracker';
+const DB_NAME = 'errortracker'
 
-const options = {
+/*const options = {
     query: (e) => {
         console.log(e.query);
     },
-};
+};*/
 
-const pgp = require('pg-promise')(options);
+const pgp = require('pg-promise')();
 
 module.exports = pgp({
     database: DB_NAME,
     port: 5432,
-    host: 'localhost',
+    host: 'localhost'
 })

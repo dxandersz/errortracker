@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 const usersController = {};
 
-usersController.index = function(req, res) {
+usersController.index = (req, res) => {
     User.getAll()
     .then((users) => {
         res.json({
@@ -15,7 +15,7 @@ usersController.index = function(req, res) {
     });
 };
 
-usersController.show = function(req, res) {
+usersController.show = (req, res) => {
     const id = req.params.id
     User.getById(id)
     .then((foundUser) => {
@@ -26,7 +26,7 @@ usersController.show = function(req, res) {
     });
 };
 
-usersController.delete = function(req, res) {
+usersController.delete = (req, res) => {
     const id = req.params.id;
     User.getById(id).then((foundUser) => {
         return foundUser.delete();
@@ -46,7 +46,7 @@ usersController.delete = function(req, res) {
     })
 }
 
-usersController.create = function(req, res) {
+usersController.create = (req, res) => {
     const user = new User({
         username: req.body.username,
         password_digest: req.body.password_digest,
@@ -60,7 +60,7 @@ usersController.create = function(req, res) {
     })
 }
 
-usersController.update = function(req, res) {
+usersController.update = (req, res) => {
     const user = User.getById(req.params.id).then((foundUser) => {
         return foundUser.update(req.body)
     }).then((updatedUser) => {

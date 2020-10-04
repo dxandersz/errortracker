@@ -21,6 +21,7 @@ app.listen(PORT, () => {
 
 
 app.use('/users', userRouter);
+app.use('/reports', reportRouter);
 
 app.use('*', (req, res) => {
     res.status(404).send({
