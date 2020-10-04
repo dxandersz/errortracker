@@ -59,3 +59,17 @@ npm ERR! This is probably not a problem with npm. There is likely additional log
 
 npm ERR! A complete log of this run can be found in:
 npm ERR!     /home/david/.npm/_logs/2020-10-04T05_33_40_517Z-debug.log
+
+##########
+
+(node:56972) UnhandledPromiseRejectionWarning: error: password authentication failed for user "david"
+    at Parser.parseErrorMessage (/home/david/Desktop/General_Assembly/errortracker/node_modules/pg-protocol/dist/parser.js:278:15)
+    at Parser.handlePacket (/home/david/Desktop/General_Assembly/errortracker/node_modules/pg-protocol/dist/parser.js:126:29)
+    at Parser.parse (/home/david/Desktop/General_Assembly/errortracker/node_modules/pg-protocol/dist/parser.js:39:38)
+    at Socket.stream.on (/home/david/Desktop/General_Assembly/errortracker/node_modules/pg-protocol/dist/index.js:8:42)
+    at Socket.emit (events.js:198:13)
+    at addChunk (_stream_readable.js:288:12)
+    at readableAddChunk (_stream_readable.js:269:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+(node:56972) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 8)

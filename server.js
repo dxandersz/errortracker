@@ -3,6 +3,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 
 const userRouter = require('./routes/user-router');
+const reportRouter = require('./routes/report-router')
 
 const app = express();
 

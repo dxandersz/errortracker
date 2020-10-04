@@ -12,7 +12,7 @@ class Report {
     
     static getAll() {
         return db
-            .manyorNone('SELECT * FROM reports ORDER BY id ASC')
+            .manyOrNone('SELECT * FROM reports ORDER BY id ASC')
             .then((reports) => {
                 return reports.map((report) => {
                     return new this(report);
