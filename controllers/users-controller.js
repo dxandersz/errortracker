@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 const usersController = {};
 
-usersController.index = function(req, res) {
+usersController.index = (req, res) => {
     User.getAll()
     .then((users) => {
         res.json({
@@ -11,11 +11,12 @@ usersController.index = function(req, res) {
         });
     })
     .catch((err) => {
-        res.status(500).json({ err })
+        console.log(err);
+        res.status(500).json({ err, message: err.message });
     });
 };
 
-usersController.show = function(req, res) {
+usersController.show = (req, res) => {
     const id = req.params.id
     User.getById(id)
     .then((foundUser) => {
@@ -26,7 +27,7 @@ usersController.show = function(req, res) {
     });
 };
 
-usersController.delete = function(req, res) {
+usersController.delete = (req, res) => {
     const id = req.params.id;
     User.getById(id).then((foundUser) => {
         return foundUser.delete();
@@ -46,7 +47,7 @@ usersController.delete = function(req, res) {
     })
 }
 
-usersController.create = function(req, res) {
+usersController.create = (req, res) => {
     const user = new User({
         username: req.body.username,
         password_digest: req.body.password_digest,
@@ -60,22 +61,20 @@ usersController.create = function(req, res) {
     })
 }
 
-usersController.update = function(req, res) {
-    const user = User.getById(req.params.id).then((foundUser) => {
-        return foundUser.update(req.body)
+usersController.update = (req, res) => {
+    User.getById(req.params.id)
+    .then((user) => {
+        return user.update(req.body)
     }).then((updatedUser) => {
         res.json({
             message: 'ok',
-            user: updatedUser
-        })
+            data: { report: updatedUser },
+        });
     })
     .catch((err) => {
-        if (err.message === 'User not found') {
-            res.status(404).json({ err: 'User not found' })
-        } else {
-            res.status(500).json({ err })
-        }
-    })
+        console.log(err);
+        res.status(500).json({ err, message: err.message });
+    });
 }
 
 module.exports = usersController;

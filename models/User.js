@@ -40,7 +40,7 @@ class User {
                 });
     }
 
-    updated(changes) {
+    update(changes) {
         Object.assign(this, changes);
         return db
             .oneOrNone(

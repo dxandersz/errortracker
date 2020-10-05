@@ -1,4 +1,4 @@
-const DB_NAME = 'errortracker';
+const DB_NAME = 'errortracker'
 
 const options = {
     query: (e) => {
@@ -6,10 +6,12 @@ const options = {
     },
 };
 
-const pgp = require('pg-promise')(options);
+const pgp = require('pg-promise')();
 
 module.exports = pgp({
     database: DB_NAME,
     port: 5432,
     host: 'localhost',
+//    user: 'postgres',
+//    password: 'my_postgres_password'
 })
