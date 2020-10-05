@@ -13,6 +13,6 @@ module.exports = pgp({
     database: DB_NAME,
     port: 5432,
     host: 'localhost',
-    user: 'postgres',
-    password: 'my_postgres_password'
+//    user: 'postgres',
+//    password: 'my_postgres_password'
 })
