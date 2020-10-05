@@ -9,15 +9,15 @@ const passport = require('passport');
 
 // Importing routers for both tables.
 const userRouter = require('./routes/user-router');
-const reportRouter = require('./routes/report-router')
+const reportRouter = require('./routes/report-router');
 
-// Initializzing the app and loading .env
+// Initializing the app and loading .env
 const app = express();
 require('dotenv').config();
 
 // Here's our middleware!
 app.use(logger('dev'));
-app.user(methodOverride('_method'));
+app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -33,7 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Views!
-app.use('views', 'views');
+app.set('views', 'views');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
@@ -64,7 +64,6 @@ app.use('*', (req, res) => {
 
 // For dealing with errors!
 app.use((err, req, res, next) => {
-    console.log(err.stack);
     res.status(500).send({ err, message: err.message });
 });
 
