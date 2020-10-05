@@ -34,12 +34,13 @@ class Report {
             .one(
 
             `INSERT INTO reports (category, title, description, error_log, solution)
-            VALUES ($/category/, $/title/, $/description/, $/error_log/, $/solution/)
+            VALUES ($/category/, $/title/, $/description/, $/error_log/, $/solution/, $/user_id/)
             RETURNING *`,
                 this
             )
             .then((report) => {
                 return Object.assign(this, report);
+
             });
     }
 
