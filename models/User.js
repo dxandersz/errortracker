@@ -26,6 +26,17 @@ class User {
             });
     }
 
+
+    // Not needed now but could have value when app is expanded.
+    static findByUserName(username) {
+        return db
+            .oneOrNone('SELECT * FROM users WHERE username = $1', username)
+            .then((user) => {
+                if (user) return new this(user);
+                else throw new Error('User not found');
+            });
+    }
+
     save() {
         return db
             .one(
@@ -40,6 +51,8 @@ class User {
                 });
     }
 
+
+// Can't hurt to keep these routes, but we don't need them for now. Might prune if there's time before submission.
     update(changes) {
         Object.assign(this, changes);
         return db
@@ -59,6 +72,7 @@ class User {
     delete() {
         return db.oneOrNone('DELETE FROM users WHERE id = $1', this.id);
     }
+
 }
 
 module.exports = User;
