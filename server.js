@@ -14,6 +14,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static('public'));
 
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
@@ -29,3 +32,8 @@ app.use('*', (req, res) => {
         error: 'Not found',
     });
 });
+
+// Initializing constants for auth.
+
+
+

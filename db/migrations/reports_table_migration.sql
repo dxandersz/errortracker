@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS reports (
     title VARCHAR(255),
     description TEXT,
     error_log TEXT,
-    solution TEXT
+    solution TEXT,
+    user_id INTEGER REFERENCES users(id);
 );
 
