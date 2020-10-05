@@ -10,7 +10,7 @@ const passport = require('passport');
 // Importing routers for both tables.
 const userRouter = require('./routes/user-router');
 const reportRouter = require('./routes/report-router');
-const authRouter = require('./routes/suth-router');
+const authRouter = require('./routes/auth-router');
 
 // Initializing the app and loading .env
 const app = express();
@@ -54,7 +54,7 @@ app.get('/', (req, res) => {
 
 app.use('/users', userRouter);
 app.use('/reports', reportRouter);
-app.user('/auth', authRouter);
+app.use('/auth', authRouter);
 
 // For routes that don't get used.
 app.use('*', (req, res) => {

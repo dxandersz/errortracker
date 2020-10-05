@@ -34,18 +34,13 @@ reportsController.create = (req, res) => {
         description: req.body.description,
         error_log: req.body.error_log,
         solution: req.body.solution,
+        user_id: req.user.id,
     })
-        .save()
         .then((report) => {
-            res.json({
-                message: 'ok',
-                data: { report },
-            });
+            res.redirect(`/reports/${report.id}`);
+            
         })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json({ err, message: err.message });
-        });
+        .catch(next);
 };
 
 reportsController.update = (req, res) => {

@@ -1,4 +1,5 @@
 const db = require('../db/config');
+const Report = require('./Report');
 
 class User {
     constructor(user) {
@@ -49,6 +50,14 @@ class User {
                 .then((user) => {
                     return Object.assign(this, user);
                 });
+    }
+
+    findUserReports() {
+        return db
+            .manyOrNone('SELECT * FROM reports WHERE user_id = $1', this.id)
+            .then((reports) => {
+                return reports.map((report) => new Report(report));
+            });
     }
 
 
