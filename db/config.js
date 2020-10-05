@@ -1,3 +1,4 @@
+
 const DB_NAME = 'errortracker'
 
 const options = {
